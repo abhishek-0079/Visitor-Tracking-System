@@ -137,3 +137,16 @@ form p{
         transform: translate(-50%,-50%) scale(1);
     }
 }
+
+@media (min-width:768px) and (max-width:980px){
+    .mainContainer{
+       height: 42vh;
+       width:40vw;
+    }
+}
+
+@media (min-width:300px) and (max-width:767px){
+    .bgImg{
+      
+    }
+}
