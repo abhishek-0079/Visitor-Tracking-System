@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+
+*{
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box;
+    
+}
+::-webkit-scrollbar{
+    display: none;
+}
+
+.bgImg{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index:-1;
+    object-fit: cover;
+    width: 101vw;
+    height: 100vh;
+    /* -webkit-filter: grayscale(100%); */
+
+}
+
+.logo{
+    height: 120px;
+    width: 120px;
+    margin-top: 20px;
+}
+.mainContainer{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  background-color: rgb(243, 237, 237);
+  box-shadow: 0px 4px 6px rgba(10, 10, 10, 0.1);
+  border-radius: 12px;
+  height: 85vh;
+  width: 30vw;
+  padding: 25px 10px;
+  animation: fadeInScale 0.7s ease-out;
+
+
+}
+.heading{
+    font-family: "Nunito", sans-serif;
+font-weight: 780;
+font-size: 35px;
+color: rgb(145, 38, 6);
+
+}
+.subHeading1{
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color:orange;
+
+    padding: 0px 0px;
+    
+}
+.subHeading2{
+    font-family: "Nunito",sans-serif;
+    font-weight: 550;
+    font-size: 15px;
+}
+.subHeading2 span{
+    color: orange;
+}
+.inputField{
+    margin: 2.5rem 0;
+    justify-content: center;
+    align-items: center;
+   
+
+}
+.input{
+    padding: 15px 15px;
+    border-radius: 1rem;
+    border: none;
+    width: 70%;
+    margin: 10px;
+    font-size: 14px;
+    font-family: "Nunito",sans-serif;
+    font-weight: 650;
+
+
+}
+.input:focus{
+    outline: none;
+}
+.btn{
+    margin: 24px 0px;
+    padding: 8px 25px;
+    font-size: 16px;
+    font-family: "Nunito",sans-serif;
+    font-weight: bold;
+    border-radius: 0.7rem;
+    background-color: rgb(233, 153, 4);
+    border: none;
+    color:rgb(0, 0, 0);
+    cursor: pointer;
+
+}
+form p{
+    font-family: "Nunito",sans-serif;
+    color: red;
+    font-size: 12px;
+    font-weight: 500;
+
+}
+.btn:focus{
+
+    outline: none;
+}
+.resetPass{
+    font-family: "Nunito",sans-serif;
+    color: orange;
+    font-size: 12px;
+    font-weight: 500;
+
+
+}
+.resetPass:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+@keyframes fadeInScale{
+    from{
+        opacity: 1;
+        transform:translate(-50%,-50%) scale(0.3);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%,-50%) scale(1);
+    }
+}
