@@ -5,7 +5,7 @@ import LoginPanel from "./components/LoginPanel";
 import DashBoard from "./components/DashBoard";
 
 function ProtectedRoute({ isLoggedin, children }) {
-  return isLoggedin ? children : <Navigate to="/" replace />;
+  return isLoggedin ? children : <Navigate to="/dashboard" replace />;
 }
 
 function App() {
@@ -35,7 +35,7 @@ function App() {
     <>
    <Router>
     <Routes>
-      <Route path="*" element={<LoginPanel/>}/>
+      <Route path="*" element={<LoginPanel onLogin={() => {}}/>}/>
       <Route path="/dashboard" element={<DashBoard/>}/>
 
     </Routes>
