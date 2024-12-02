@@ -32,33 +32,15 @@ function App() {
   };
 
   return (
-    <SnackbarProvider maxSnack={3}> {/* Wrap your app with SnackbarProvider */}
-      <Router>
-        <Routes>
-          {/* Public Route for Login */}
-          <Route
-            path="/"
-            element={
-              isLoggedin ? (
-                <Navigate to="/dashboard" replace />
-              ) : (
-                <LoginPanel onLogin={handleLogin} />
-              )
-            }
-          />
+    <>
+   <Router>
+    <Routes>
+      <Route path="*" element={<LoginPanel/>}/>
+      <Route path="/dashboard" element={<DashBoard/>}/>
 
-          {/* Protected Route for Dashboard */}
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute isLoggedin={isLoggedin}>
-                <DashBoard onLogout={handleLogout} />
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
-      </Router>
-    </SnackbarProvider>
+    </Routes>
+   </Router>
+    </> 
   );
 }
 
