@@ -141,7 +141,7 @@ form p{
     }
 }
 
-@media (min-width:320px) and (max-width:480px){
+@media (min-width:300px) and (max-width:480px){
     .mainContainer{
         height: auto;
         width: 85vw;
@@ -166,14 +166,14 @@ form p{
 @media (min-width:851px) and (max-width:1200px){
     .mainContainer{
         height: auto;
-        width: 40vw;
+        width: 32vw;
       
     }
 }
 @media (min-width:1201px) and (max-width:1500px){
     .mainContainer{
         height: auto;
-        width: 30vw;
+        width: 28vw;
       
     }
 }
