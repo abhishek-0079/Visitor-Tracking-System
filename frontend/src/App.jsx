@@ -36,7 +36,7 @@ function App() {
    <Router>
     <Routes>
       <Route path="*" element={<LoginPanel onLogin={() => {}}/>}/>
-      <Route path="/dashboard" element={<DashBoard/>}/>
+      <Route path="/dashboard" element={<DashBoard onLogout={handleLogout}/>}/>
 
     </Routes>
    </Router>
