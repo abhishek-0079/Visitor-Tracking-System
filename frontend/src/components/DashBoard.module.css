@@ -15,7 +15,7 @@
   object-fit: cover;
   top: 0;
   bottom: 0;
-  filter: blur(4px);
+  filter: blur(2px);
 }
 
 .navbar {
@@ -27,6 +27,32 @@
   justify-content: space-between;
   cursor: pointer;
   padding: 10px 20px;
+  flex-wrap: nowrap; 
+}
+
+.navbar img {
+  height: 60px;
+  width: 60px;
+  padding: 5px;
+}
+
+.entriesBtn {
+  align-items: center;
+  display: flex;
+  font-weight: 600;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 15px;
+  font-size: 14px;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.entriesBtn:hover {
+  background: linear-gradient(135deg, #0056b3, #007bff);
+  transform: scale(1.05);
 }
 
 .admin {
@@ -34,6 +60,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  gap: 8px;
   cursor: pointer;
 }
 
@@ -60,35 +87,7 @@
   transform: scale(1.1);
 }
 
-.navbar img {
-  height: 80px;
-  width: 80px;
-  padding: 10px;
-}
-
-.loginIcon {
-  margin-right: 8px;
-}
-
-.entriesBtn {
-  align-items: center;
-  display: flex;
-  font-weight: 600;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 20px;
-  font-size: 16px;
-  background: linear-gradient(135deg, #007bff, #0056b3);
-  color: white;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.entriesBtn:hover {
-  background: linear-gradient(135deg, #0056b3, #007bff);
-  transform: scale(1.05);
-}
-
+/* Dropdown Styles */
 .dropdown {
   position: absolute;
   top: 50px;
@@ -141,45 +140,52 @@
   transform: scale(1.05);
 }
 
-.hideOnMobile {
-  display: inline-block;
-}
 
-.showOnMobile {
-  display: none;
-  font-size: 16px;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-/* Responsive Design */
 @media (max-width: 768px) {
-  .hideOnMobile {
-    display: none;
-  }
-
-  .showOnMobile {
-    display: block;
-  }
-
   .navbar {
-    padding: 10px;
-    justify-content: center;
-    flex-direction: column;
+    padding: 5px 10px;
+    flex-direction: row; 
+    justify-content: space-between; 
+    gap: 10px; 
   }
 
-  .admin {
-    margin-top: 10px;
+  .navbar img {
+    height: 50px;
+    width: 50px;
   }
 
   .entriesBtn {
-    font-size: 14px;
-    padding: 6px 12px;
-    border-radius: 15px;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 12px;
   }
 
-  .adminImg {
-    padding: 4px;
+  .admin {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .adminName {
+    font-size: 12px;
+  }
+
+  
+  .adminName {
+    display: none;
+  }
+
+  
+  .dropdown {
+    width: 180px;
+    padding: 10px;
+  }
+  
+  
+  .showOnMobile {
+    display: block;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
   }
 }
