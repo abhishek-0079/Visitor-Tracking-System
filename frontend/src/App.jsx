@@ -11,7 +11,7 @@ function ProtectedRoute({ isLoggedin, children }) {
 function App() {
   const [isLoggedin, setIsLoggedin] = useState(false);
 
-  // Check logged-in state from local storage on initial load
+  
   useEffect(() => {
     const loggedInState = localStorage.getItem("isLoggedin");
     if (loggedInState === "true") {
