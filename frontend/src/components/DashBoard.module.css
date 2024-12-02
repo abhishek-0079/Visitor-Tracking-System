@@ -6,6 +6,7 @@
   box-sizing: border-box;
   font-family: "Nunito", sans-serif;
 }
+
 .bgImg {
   position: absolute;
   width: 101vw;
@@ -14,7 +15,9 @@
   object-fit: cover;
   top: 0;
   bottom: 0;
+  filter: blur(4px);
 }
+
 .navbar {
   position: absolute;
   width: 100vw;
@@ -23,38 +26,160 @@
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-
-  padding: 0 15px;
+  padding: 10px 20px;
 }
+
 .admin {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.adminName {
-  padding: 0px 5px;
-  font-size: 14.5px;
-  font-weight: 500;
-}
-.adminImg {
-  border: 1px solid black;
-  padding: 3px;
-  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
 }
 
-.navbar span {
-  font-weight: bolder;
-  font-size: 38px;
+.adminName {
+  padding: 0 10px;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: #333;
+  transition: color 0.3s ease;
 }
+
+.adminName:hover {
+  color: #007bff;
+}
+
+.adminImg {
+  border: 2px solid #007bff;
+  padding: 5px;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.admin:hover .adminImg {
+  transform: scale(1.1);
+}
+
+.navbar img {
+  height: 80px;
+  width: 80px;
+  padding: 10px;
+}
+
 .loginIcon {
-  margin: 0px 4px 0px 0px;
+  margin-right: 8px;
 }
+
 .entriesBtn {
   align-items: center;
   display: flex;
   font-weight: 600;
-  padding: 3px 10px;
+  padding: 8px 16px;
   border: none;
-  border-radius: 10px;
+  border-radius: 20px;
   font-size: 16px;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.entriesBtn:hover {
+  background: linear-gradient(135deg, #0056b3, #007bff);
+  transform: scale(1.05);
+}
+
+.dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: linear-gradient(135deg, #ffffff, #f8f9fa);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 200px;
+  transform: translateY(-10px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.admin:hover .dropdown {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.dropdown p {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.logoutBtn {
+  background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+  width: 100%;
+  text-align: center;
+}
+
+.logoutBtn:hover {
+  background: linear-gradient(135deg, #feb47b, #ff7e5f);
+  transform: scale(1.05);
+}
+
+.hideOnMobile {
+  display: inline-block;
+}
+
+.showOnMobile {
+  display: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hideOnMobile {
+    display: none;
+  }
+
+  .showOnMobile {
+    display: block;
+  }
+
+  .navbar {
+    padding: 10px;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .admin {
+    margin-top: 10px;
+  }
+
+  .entriesBtn {
+    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 15px;
+  }
+
+  .adminImg {
+    padding: 4px;
+  }
 }
