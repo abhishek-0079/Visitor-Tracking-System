@@ -9,6 +9,7 @@ import logo from '../assets/logo.png';
 function DashBoard({ onLogout }) {
   const [username, setUsername] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false); // State for dropdown
+  const [selectedCard, setSelectedCard] = useState(null); // State for selected card
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,6 +27,38 @@ function DashBoard({ onLogout }) {
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
+  };
+
+  const cardData = [
+    { id: 'admission', name: 'Admission Cell' },
+    { id: 'registrar', name: 'Registrar' },
+    { id: 'hods', name: 'HODs' },
+    { id: 'faculties', name: 'Faculties' },
+    { id: 'students', name: 'Students' },
+    { id: 'others', name: 'Others' },
+  ];
+
+  const handleCardClick = (id) => {
+    setSelectedCard(id);
+  };
+
+  const renderCardContent = () => {
+    switch (selectedCard) {
+      case 'admission':
+        return <p>Content for Admission Cell</p>;
+      case 'registrar':
+        return <p>Content for Registrar</p>;
+      case 'hods':
+        return <p>Content for HODs</p>;
+      case 'faculties':
+        return <p>Content for Faculties</p>;
+      case 'students':
+        return <p>Content for Students</p>;
+      case 'others':
+        return <p>Content for Others</p>;
+      default:
+        return <p>Please select a card to view details.</p>;
+    }
   };
 
   return (
@@ -54,6 +87,59 @@ function DashBoard({ onLogout }) {
           )}
         </div>
       </div>
+      <div className={styles.contentContainer}>
+  <div className={styles.cardContainer}>
+    <div className={styles.cardColumn}>
+      <div
+        className={`${styles.card} ${selectedCard === 'admission' ? styles.activeCard : ''}`}
+        onClick={() => handleCardClick('admission')}
+      >
+        Admission Cell
+      </div>
+      <div
+        className={`${styles.card} ${selectedCard === 'registrar' ? styles.activeCard : ''}`}
+        onClick={() => handleCardClick('registrar')}
+      >
+        Registrar
+      </div>
+      <div
+        className={`${styles.card} ${selectedCard === 'hods' ? styles.activeCard : ''}`}
+        onClick={() => handleCardClick('hods')}
+      >
+        HODs
+      </div>
+    </div>
+    <div className={styles.cardColumn}>
+      <div
+        className={`${styles.card} ${selectedCard === 'faculties' ? styles.activeCard : ''}`}
+        onClick={() => handleCardClick('faculties')}
+      >
+        Faculties
+      </div>
+      <div
+        className={`${styles.card} ${selectedCard === 'students' ? styles.activeCard : ''}`}
+        onClick={() => handleCardClick('students')}
+      >
+        Students
+      </div>
+      <div
+        className={`${styles.card} ${selectedCard === 'others' ? styles.activeCard : ''}`}
+        onClick={() => handleCardClick('others')}
+      >
+        Others
+      </div>
+    </div>
+  </div>
+  <div className={styles.centerShapeContainer}>
+          <div className={styles.centerShape}>
+            <p>Whom you want to meet?</p>
+          </div>
+        </div>
+  <div className={styles.detailsContainer}>
+    {renderCardContent()}
+  </div>
+</div>
+
     </div>
   );
 }

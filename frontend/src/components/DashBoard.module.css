@@ -15,24 +15,34 @@
   object-fit: cover;
   top: 0;
   bottom: 0;
-  filter: blur(2px);
+  
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+  filter: blur(4px);
 }
 
 .navbar {
-  position: absolute;
+  
+  position: fixed;
+  top: 0;
   width: 100vw;
-  backdrop-filter: blur(50px);
+  
+  /* background-size: cover; */
+  background-position: center;
+  
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  padding: 10px 20px;
+  padding: 10px;
   flex-wrap: nowrap; 
+  z-index: 1000;
 }
 
 .navbar img {
-  height: 60px;
-  width: 60px;
+  height: 70px;
+  width: 70px;
   padding: 5px;
 }
 
@@ -187,5 +197,154 @@
     font-size: 14px;
     color: #333;
     margin-bottom: 5px;
+  }
+}
+
+/* Ensure the main content starts below the navbar */
+.contentContainer {
+  margin-top: 200px; /* Adjust this value to match your navbar's height */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  overflow-x: hidden;
+  background-attachment: fixed;
+}
+
+/* Cards container - Two columns with a gap */
+.cardContainer {
+  display: flex;
+  justify-content: center;
+  gap:570px;
+  width: 100%;
+  z-index: 1;
+}
+
+/* Each column of cards */
+.cardColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  width: 20%;
+}
+
+/* Individual card */
+.card {
+  padding: 30px;
+  text-align: center;
+  border: none;
+  border-radius: 26px;
+  background-color: white;
+  box-shadow: 4px 4px 8px #c8c8c8, -4px -4px 8px #000000;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-family: 'Arial', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+}
+
+.card:hover {
+  background: linear-gradient(135deg, #0056b3, #007bff);
+  transform: scale(1.05);
+}
+
+.activeCard {
+  background: #007bff;
+  color: #fff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Details container for the content shown below */
+.detailsContainer {
+  padding: 20px;
+  width: 10%;
+  max-width: 800px;
+  border-radius: 16px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+
+.centerShapeContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.centerShape {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: transparent;
+  color: white;
+  font-size: 40px;
+  font-weight: 850;
+  text-align: center;
+  animation: zoomInOut 3s infinite ease-in-out;
+}
+
+.centerShape p {
+  margin: 0;
+  font-size: 16px;
+}
+
+@keyframes zoomInOut {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .cardContainer {
+    grid-template-columns: repeat(1, 1fr); /* Stack cards in 1 column */
+    gap: 20px;  /* Smaller gap between cards */
+  }
+
+  .detailsContainer {
+    width: 100%; /* Make details container full width */
+  }
+}
+
+@media (max-width: 500px) {
+  .navbar {
+    flex-direction: column; /* Stack navbar items vertically */
+    align-items: flex-start;
+  }
+
+  .entriesBtn {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+
+  .admin {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .adminName {
+    font-size: 12px;
   }
 }
