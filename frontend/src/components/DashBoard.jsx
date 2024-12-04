@@ -80,7 +80,7 @@ function DashBoard({ onLogout }) {
         {loading ? (
           <div className={styles.loaderContainer}>
             <div className={styles.loader}></div>
-            <p>Loading, please wait...</p>
+           
           </div>
         ) : selectedOption ? (
           <div className={styles.selectedContainer}>
