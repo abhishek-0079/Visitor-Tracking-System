@@ -6,62 +6,56 @@
   box-sizing: border-box;
   font-family: "Nunito", sans-serif;
 }
-
-.bgImg {
-  position: absolute;
-  width: 101vw;
-  height: 100vh;
-  z-index: -1;
-  object-fit: cover;
-  top: 0;
-  bottom: 0;
-  
-  background-attachment: fixed;
+body {
+  background-image: url(../assets/background.jpeg);
   background-size: cover;
-  background-position: center center;
-  filter: blur(4px);
+  background-position: center;
+  backdrop-filter: blur(3px);
+ 
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
 }
 
 .navbar {
-  
-  position: fixed;
-  top: 0;
   width: 100vw;
-  
+
   /* background-size: cover; */
   background-position: center;
-  
+
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  padding: 10px;
-  flex-wrap: nowrap; 
+  padding: 5px 10px;
+  flex-wrap: nowrap;
   z-index: 1000;
 }
 
 .navbar img {
-  height: 70px;
-  width: 70px;
+  height: 60px;
+  width: auto;
+  object-fit: contain;
   padding: 5px;
 }
 
 .entriesBtn {
   align-items: center;
   display: flex;
-  font-weight: 600;
+  font-weight: 700;
   padding: 6px 12px;
   border: none;
   border-radius: 15px;
   font-size: 14px;
-  background: linear-gradient(135deg, #007bff, #0056b3);
+  background: rgba(12, 63, 71, 0.555);
   color: white;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .entriesBtn:hover {
-  background: linear-gradient(135deg, #0056b3, #007bff);
+  background: rgb(226, 26, 12);
   transform: scale(1.05);
 }
 
@@ -77,17 +71,17 @@
 .adminName {
   padding: 0 10px;
   font-size: 14.5px;
-  font-weight: 500;
+  font-weight: 650;
   color: #333;
   transition: color 0.3s ease;
 }
 
 .adminName:hover {
-  color: #007bff;
+  color: #000000;
 }
 
 .adminImg {
-  border: 2px solid #007bff;
+  border: 2px solid #000000;
   padding: 5px;
   border-radius: 50%;
   transition: transform 0.3s ease;
@@ -96,8 +90,6 @@
 .admin:hover .adminImg {
   transform: scale(1.1);
 }
-
-/* Dropdown Styles */
 .dropdown {
   position: absolute;
   top: 50px;
@@ -132,7 +124,7 @@
 }
 
 .logoutBtn {
-  background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  background:rgb(226, 26, 12);
   color: white;
   border: none;
   padding: 10px 15px;
@@ -146,17 +138,98 @@
 }
 
 .logoutBtn:hover {
-  background: linear-gradient(135deg, #feb47b, #ff7e5f);
   transform: scale(1.05);
 }
+
+.mainContainer {
+  height: 85vh;
+  width: 95vw;
+  margin: auto;
+  padding: 10px 30px;
+  border-radius: 1rem;
+  text-align: center;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  background: rgba(253, 253, 253, 0.5); 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25); 
+ 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.options {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 90%;
+  height: 100%;
+  padding: 20px;
+}
+
+.left,
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+
+.options p {
+  animation: zoomInOut 3s infinite ease-in-out;
+  font-size: 26px;
+  font-weight: 800;
+  color: rgb(20, 19, 19);
+  text-align: center;
+  margin: 10px 0;
+}
+
+@keyframes zoomInOut {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.leftOption,
+.rightOption {
+  background-color: rgb(53, 141, 212);
+  padding: 15px 20px;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  border-radius: 1.5rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: auto;
+  height: 70px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.leftOption:hover,
+.rightOption:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+  background-color: aqua;
+  cursor: pointer;
+}
+
+
 
 
 @media (max-width: 768px) {
   .navbar {
     padding: 5px 10px;
-    flex-direction: row; 
-    justify-content: space-between; 
-    gap: 10px; 
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
   }
 
   .navbar img {
@@ -180,171 +253,35 @@
     font-size: 12px;
   }
 
-  
   .adminName {
     display: none;
   }
 
-  
   .dropdown {
     width: 180px;
     padding: 10px;
   }
-  
-  
+
   .showOnMobile {
     display: block;
     font-size: 14px;
     color: #333;
     margin-bottom: 5px;
   }
-}
 
-/* Ensure the main content starts below the navbar */
-.contentContainer {
-  margin-top: 200px; /* Adjust this value to match your navbar's height */
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
-  overflow-x: hidden;
-  background-attachment: fixed;
-}
-
-/* Cards container - Two columns with a gap */
-.cardContainer {
-  display: flex;
-  justify-content: center;
-  gap:570px;
-  width: 100%;
-  z-index: 1;
-}
-
-/* Each column of cards */
-.cardColumn {
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-  width: 20%;
-}
-
-/* Individual card */
-.card {
-  padding: 30px;
-  text-align: center;
-  border: none;
-  border-radius: 26px;
-  background-color: white;
-  box-shadow: 4px 4px 8px #c8c8c8, -4px -4px 8px #000000;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  font-family: 'Arial', sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  color: #000;
-}
-
-.card:hover {
-  background: linear-gradient(135deg, #0056b3, #007bff);
-  transform: scale(1.05);
-}
-
-.activeCard {
-  background: #007bff;
-  color: #fff;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Details container for the content shown below */
-.detailsContainer {
-  padding: 20px;
-  width: 10%;
-  max-width: 800px;
-  border-radius: 16px;
-  background-color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  font-family: 'Arial', sans-serif;
-  color: #333;
-  font-size: 16px;
-  line-height: 1.5;
-}
-
-
-.centerShapeContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 0;
-}
-
-.centerShape {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: transparent;
-  color: white;
-  font-size: 40px;
-  font-weight: 850;
-  text-align: center;
-  animation: zoomInOut 3s infinite ease-in-out;
-}
-
-.centerShape p {
-  margin: 0;
-  font-size: 16px;
-}
-
-@keyframes zoomInOut {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.5);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-@media (max-width: 768px) {
-  .cardContainer {
-    grid-template-columns: repeat(1, 1fr); /* Stack cards in 1 column */
-    gap: 20px;  /* Smaller gap between cards */
+  .mainContainer {
+    height: 90vh;
+    width: 95vw;
   }
 
-  .detailsContainer {
-    width: 100%; /* Make details container full width */
-  }
-}
-
-@media (max-width: 500px) {
-  .navbar {
-    flex-direction: column; /* Stack navbar items vertically */
-    align-items: flex-start;
-  }
-
-  .entriesBtn {
-    font-size: 12px;
-    padding: 4px 8px;
-  }
-
-  .admin {
-    display: flex;
+  .options {
+    flex-direction: column;
     align-items: center;
-    gap: 5px;
+    height: auto;
   }
 
-  .adminName {
-    font-size: 12px;
+  .leftOption,
+  .rightOption {
+    width: 90%;
   }
 }
