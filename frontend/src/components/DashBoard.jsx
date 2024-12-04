@@ -42,9 +42,9 @@ function DashBoard({ onLogout }) {
   };
 
   const lOptions = [
-    { name: "Admission Cell", route: "/admission-cell" },
-    { name: "Registrar Office", route: "/registrar-office" },
     { name: "HODs", route: "/hods" },
+    { name: "Registrar Office", route: "/registrar-office" },
+    { name: "Admission Cell", route: "/admission-cell" },
   ];
 
   const rOptions = [

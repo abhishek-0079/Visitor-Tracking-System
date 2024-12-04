@@ -6,155 +6,354 @@
   box-sizing: border-box;
   font-family: "Nunito", sans-serif;
 }
+
 body {
   background-image: url(../assets/background.jpeg);
   background-size: cover;
   background-position: center;
   backdrop-filter: blur(3px);
- 
+  background-repeat: no-repeat;
   height: 100vh;
   width: 100vw;
   margin: 0;
   padding: 0;
 }
+
 .navbar {
-    width: 100vw;
-  
-    /* background-size: cover; */
-    background-position: center;
-  
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-    padding: 5px 10px;
-    flex-wrap: nowrap;
-    z-index: 1000;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 5px 10px;
+  flex-wrap: nowrap;
+  z-index: 1000;
+}
+
+.navbar img {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+  padding: 5px;
+}
+
+.entriesBtn {
+  align-items: center;
+  display: flex;
+  font-weight: 700;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 15px;
+  font-size: 14px;
+  background: rgba(12, 63, 71, 0.555);
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.entriesBtn:hover {
+  background: rgb(226, 26, 12);
+  transform: scale(1.05);
+}
+
+.admin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.adminName {
+  padding: 0 10px;
+  font-size: 14.5px;
+  font-weight: 650;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.adminName:hover {
+  color: #000000;
+}
+
+.adminImg {
+  border: 2px solid #000000;
+  padding: 5px;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.admin:hover .adminImg {
+  transform: scale(1.1);
+}
+
+.dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: linear-gradient(135deg, #ffffff, #f8f9fa);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 200px;
+  transform: translateY(-10px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.admin:hover .dropdown {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.dropdown p {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.logoutBtn {
+  background: rgb(226, 26, 12);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+  width: 100%;
+  text-align: center;
+}
+
+.logoutBtn:hover {
+  transform: scale(1.05);
+}
+
+.mainContainer {
+  height: 85vh;
+  width: 95vw;
+  margin: auto;
+  margin-top: 15px;
+  padding: 10px 30px;
+  border-radius: 1rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 254, 254, 0.5);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+
+.heading {
+  font-size: 30px;
+  font-weight: 700;
+  background-color: rgb(24, 161, 202);
+  padding: 10px 20px;
+  margin-bottom: 25px;
+  border-radius: 2rem;
+}
+
+.staffContainer {
+  margin: 20px 0px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  flex-grow: 1;
+  max-height: 70vh; /* Ensures cards stay within the container */
+  overflow-y: auto; /* Allows scrolling if necessary */
+}
+
+.staffCard {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  height: 250px;
+  width: 220px;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 1.2rem;
+  padding: 20px;
+  line-height: 1.4;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  background-image: linear-gradient(135deg, rgba(24, 161, 202, 0.6), rgba(24, 161, 202, 0.3));
+  background-size: cover;
+}
+
+.staffCard:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.staffName {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  background-color: #fff;
+  padding: 10px 20px;
+  border-radius: 1rem;
+  text-align: center;
+  color: #1f1f1f;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.staffName:hover {
+  background-color: #18a1ca;
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+.staffImg {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 3px solid #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.staffImg:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.staffCardContent {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.staffCardContent p {
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 10px;
+  transition: color 0.3s ease;
+}
+
+.staffCardContent p:hover {
+  color: #18a1ca;
+}
+
+.loaderContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.loader {
+  width: 60px;
+  height: 60px;
+  border: 6px solid #f3f3f3;
+  border: none;
+  border-radius: 50%;
+  border-top: 6px solid #0c78c0;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  .navbar img {
-    height: 60px;
-    width: auto;
-    object-fit: contain;
-    padding: 5px;
+  100% {
+    transform: rotate(360deg);
   }
-  
-  .entriesBtn {
-    align-items: center;
-    display: flex;
-    font-weight: 700;
-    padding: 6px 12px;
-    border: none;
-    border-radius: 15px;
-    font-size: 14px;
-    background: rgba(12, 63, 71, 0.555);
-    color: white;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
-  }
-  
-  .entriesBtn:hover {
-    background: rgb(226, 26, 12);
-    transform: scale(1.05);
-  }
-  
-  .admin {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    gap: 8px;
-    cursor: pointer;
-  }
-  
-  .adminName {
-    padding: 0 10px;
-    font-size: 14.5px;
-    font-weight: 650;
-    color: #333;
-    transition: color 0.3s ease;
-  }
-  
-  .adminName:hover {
-    color: #000000;
-  }
-  
-  .adminImg {
-    border: 2px solid #000000;
-    padding: 5px;
-    border-radius: 50%;
-    transition: transform 0.3s ease;
-  }
-  
-  .admin:hover .adminImg {
-    transform: scale(1.1);
-  }
-  .dropdown {
-    position: absolute;
-    top: 50px;
-    right: 0;
-    background: linear-gradient(135deg, #ffffff, #f8f9fa);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.15);
-    z-index: 10;
-    padding: 15px;
-    display: flex;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Small devices (portrait phones, 480px and up) */
+@media (max-width: 480px) {
+  .staffContainer {
     flex-direction: column;
-    align-items: flex-start;
-    width: 200px;
-    transform: translateY(-10px);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease-in-out;
+    gap: 15px;
+    justify-content: center;
   }
-  
-  .admin:hover .dropdown {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  .dropdown p {
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .logoutBtn {
-    background:rgb(226, 26, 12);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
-    transition: background 0.3s, transform 0.2s;
+
+  .staffCard {
     width: 100%;
-    text-align: center;
+    max-width: 350px;
+    height: auto;
   }
-  
-  .logoutBtn:hover {
-    background:rgb(226, 26, 12);
-    transform: scale(1.05);
+
+  .navbar {
+    flex-direction: column;
+    justify-content: center;
   }
 
   .mainContainer {
-    height: 85vh;
-    width: 95vw;
-    margin: auto;
-    margin-top: 15px;
-    padding: 10px 30px;
-    border-radius: 1rem;
-    text-align: center;
-    overflow: hidden;
-    backdrop-filter: blur(10px);
-    background: rgba(228, 225, 225, 0.5); 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25); 
-   
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 90%;
+    padding: 20px;
+  }
+
+  .heading {
+    font-size: 24px;
+  }
+
+  .staffName {
+    font-size: 16px;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+  .staffCard {
+    width: 45%;
+  }
+
+  .mainContainer {
+    width: 85%;
+    padding: 25px;
+  }
+
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .heading {
+    font-size: 26px;
+  }
+
+  .staffName {
+    font-size: 18px;
+  }
+}
+
+/* Large devices (desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .staffContainer {
+    gap: 25px;
+  }
+
+  .staffCard {
+    width: 300px;
+  }
 }

@@ -1,55 +1,41 @@
-import styles from "./AdmissionCell.module.css";
-import { FaUserAlt, FaUser } from "react-icons/fa";
+import styles from "./Hods.module.css";
+import { FaUserAlt } from "react-icons/fa";
 import { CiLogin } from "react-icons/ci";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import React from "react";
 import logo from "../assets/logo1.png";
-import admissionStaff from "./admissionStaff";
 
-function AdmissionCell({ onLogout }) {
-  const [username, setUsername] = useState("");
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [selectedStaffId, setSelectedStaffId] = useState(null); // Track selected staff
-  const [loading, setLoading] = useState(true); // Add loading state
+function AdmissionCell({onLogout}){
+    const [username, setUsername] = useState("");
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+   
+  
+    const navigate = useNavigate();
+  
+    useEffect(() => {
+      const storedUsername = localStorage.getItem("username");
+      if (storedUsername) {
+        setUsername(storedUsername);
+      }
+    }, []);
+  
+    const handleLogout = () => {
+      localStorage.removeItem("username");
+      onLogout();
+      navigate("/");
+    };
+  
+    const toggleDropdown = () => {
+      setDropdownOpen(!dropdownOpen);
+    };
+    const handleEntriesClick = () => {
+      navigate("/entries"); 
+    };
+    
+    return (
 
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const storedUsername = localStorage.getItem("username");
-    if (storedUsername) {
-      setUsername(storedUsername);
-    }
-    // Simulate loading
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-  }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem("username");
-    onLogout();
-    navigate("/");
-  };
-
-  const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
-  };
-
-  const handleStaffClick = (staffId) => {
-    setSelectedStaffId(staffId);
-    setLoading(true); // Show loader during navigation
-    setTimeout(() => {
-      navigate("/entry-form", { state: { staffId } });
-    }, 1000);
-  };
-  const handleEntriesClick = () => {
-    navigate("/entries"); 
-  };
-
-  return (
-    <>
-      <div className={styles.navbar}>
+        <>
+         <div className={styles.navbar}>
         <img src={logo} alt="ABES Logo" />
         <button className={styles.entriesBtn} onClick={handleEntriesClick}>
           Entries
@@ -62,9 +48,7 @@ function AdmissionCell({ onLogout }) {
           <FaUserAlt size={28} className={styles.adminImg} />
           {dropdownOpen && (
             <div className={styles.dropdown}>
-              <p className={styles.showOnMobile}>
-                {username || "ABES Guard"}
-              </p>
+              <p className={styles.showOnMobile}>{username || "ABES Guard"}</p>
               <button className={styles.logoutBtn} onClick={handleLogout}>
                 Logout
               </button>
@@ -73,35 +57,14 @@ function AdmissionCell({ onLogout }) {
         </div>
       </div>
       <div className={styles.mainContainer}>
-        {loading ? (
-          <div className={styles.loaderContainer}>
-            <div className={styles.loader}></div>
-          </div>
-        ) : (
-          <>
-            <p className={styles.heading}>Admission Cell</p>
-            <div className={styles.staffContainer}>
-              {admissionStaff.map((staff) => (
-                <div
-                  key={staff.id}
-                  className={`${styles.staffCard} ${
-                    selectedStaffId === staff.id ? styles.selected : ""
-                  }`}
-                  onClick={() => handleStaffClick(staff.id)}
-                >
-                  <div className={styles.image}>
-                    <FaUser size="50px" />
-                  </div>
-                  <p className={styles.staffName}>{staff.name}</p>
-                  <p className={styles.staffPosition}>{staff.position}</p>
-                </div>
-              ))}
-            </div>
-          </>
-        )}
+      <div className={styles.selectedContainer}>
+        <h1>Hods</h1>
+        <p>yha pr cards rahega</p>
       </div>
-    </>
-  );
+    </div>
+        </>
+    );
+
 }
 
 export default AdmissionCell;

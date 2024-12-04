@@ -11,7 +11,7 @@ body {
   background-size: cover;
   background-position: center;
   backdrop-filter: blur(3px);
- background-repeat: no-repeat;
+ 
   height: 100vh;
   width: 100vw;
   margin: 0;
@@ -137,7 +137,7 @@ body {
   }
   
   .logoutBtn:hover {
-    
+    background:rgb(226, 26, 12);
     transform: scale(1.05);
   }
 
@@ -149,102 +149,12 @@ body {
     padding: 10px 30px;
     border-radius: 1rem;
     text-align: center;
+    overflow: hidden;
     backdrop-filter: blur(10px);
-    background: rgba(255, 254, 254, 0.5); 
+    background: rgba(228, 225, 225, 0.5); 
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25); 
-    overflow: scroll;
+   
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-
-  
-
-  .heading{
-    font-size: 30px;
-    font-weight: 700;
-    background-color: rgb(24, 161, 202);
-    padding: 10px 20px;
-    margin-bottom: 25px;
-    border-radius: 2rem;
-
-
-
- }
- .staffContainer {
-  margin:20px 0px;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-wrap: wrap;  
-  gap: 20px; 
-}
-
- .staffCard{
-  display: flex;
-  flex-direction: column;
-  background-color: wheat;
-  height: 200px;
-  width: 170px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 1rem;
-  padding: 15px 10px;
-  line-height: 1;
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  
- }
- .staffCard:hover{
-  cursor: pointer;
-  transform: scale(1.05);
-  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
- }
- .image {
-  background-color: rgb(161, 158, 158);
-  border-radius: 1rem;
-  padding: 10px;
-  margin: 15px 0px;
-  
-  
-  
-}
-.staffName{
-  font-size: 17px;
-  font-weight:700;
-  margin-bottom: 5px;
-  background-color: beige;
-  padding: 5px 10px;
-  border-radius: 1rem;
-}
-
-.loaderContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%; 
-}
-
-.loader {
-  width: 60px;
-  height: 60px;
-  border: 6px solid #f3f3f3;
-  border: none;
-  border-radius: 50%;
-  border-top: 6px solid #0c78c0;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-
-
