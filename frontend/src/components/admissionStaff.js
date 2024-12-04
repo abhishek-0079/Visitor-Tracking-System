@@ -13,14 +13,14 @@ const admissionStaff = [
     },
     {
       id: 3,
-      name: 'Dr. Anuj Chaudhary',
-      position: 'Cyber Security',
+      name: 'Dr. Anshika Aggrawal',
+      position: 'Operating System',
       
     },
     {
       id: 3,
-      name: 'Nand Kishore Yadav',
-      position: 'Cyber Security',
+      name: 'Dr. Anshika Aggrawal',
+      position: 'DBMS',
       
     },
     {
