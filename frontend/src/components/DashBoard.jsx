@@ -5,11 +5,11 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo1.png";
 
-
 function DashBoard({ onLogout }) {
   const [username, setUsername] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null); 
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
 
@@ -18,6 +18,10 @@ function DashBoard({ onLogout }) {
     if (storedUsername) {
       setUsername(storedUsername);
     }
+    // Simulate loading
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
   }, []);
 
   const handleLogout = () => {
@@ -31,8 +35,12 @@ function DashBoard({ onLogout }) {
   };
 
   const handleOptionClick = (route) => {
-    navigate(route) ;
+    setLoading(true); // Simulate loading when navigating
+    setTimeout(() => {
+      navigate(route);
+    }, 1000); // Delay for navigation
   };
+
   const lOptions = [
     { name: "Admission Cell", route: "/admissioncell" },
     { name: "Registrar Office", route: "/registraroffice" },
@@ -44,6 +52,7 @@ function DashBoard({ onLogout }) {
     { name: "Students", route: "/students" },
     { name: "Staff Members", route: "/staffmembers" },
   ];
+
   return (
     <>
       <div className={styles.navbar}>
@@ -68,10 +77,15 @@ function DashBoard({ onLogout }) {
         </div>
       </div>
       <div className={styles.mainContainer}>
-        {selectedOption ? (
+        {loading ? (
+          <div className={styles.loaderContainer}>
+            <div className={styles.loader}></div>
+            <p>Loading, please wait...</p>
+          </div>
+        ) : selectedOption ? (
           <div className={styles.selectedContainer}>
             <h1>{selectedOption}</h1>
-          </div>  
+          </div>
         ) : (
           <div className={styles.options}>
             <div className={styles.left}>
@@ -85,7 +99,6 @@ function DashBoard({ onLogout }) {
                 </div>
               ))}
             </div>
-
             <p>Whom you want to meet?</p>
             <div className={styles.right}>
               {rOptions.map((rightOption, index) => (

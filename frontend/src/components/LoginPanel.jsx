@@ -12,7 +12,7 @@ function LoginPanel({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const { enqueueSnackbar } = useSnackbar();  // Notistack hook
+  const { enqueueSnackbar } = useSnackbar();  
 
   const verify = async (event) => {
     event.preventDefault();
