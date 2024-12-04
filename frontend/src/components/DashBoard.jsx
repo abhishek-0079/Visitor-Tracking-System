@@ -52,12 +52,15 @@ function DashBoard({ onLogout }) {
     { name: "Students", route: "/students" },
     { name: "Staff Members", route: "/staff-members" },
   ];
+  const handleEntriesClick = () => {
+    navigate("/entries"); 
+  };
 
   return (
     <>
       <div className={styles.navbar}>
         <img src={logo} alt="ABES Logo" />
-        <button className={styles.entriesBtn}>
+        <button className={styles.entriesBtn} onClick={handleEntriesClick}>
           Entries
           <CiLogin size={25} className={styles.loginIcon} />
         </button>

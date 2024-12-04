@@ -28,13 +28,16 @@ function RegistrarOffice({onLogout}){
     const toggleDropdown = () => {
       setDropdownOpen(!dropdownOpen);
     };
+    const handleEntriesClick = () => {
+      navigate("/entries"); 
+    };
     
     return (
 
         <>
          <div className={styles.navbar}>
         <img src={logo} alt="ABES Logo" />
-        <button className={styles.entriesBtn}>
+        <button className={styles.entriesBtn} onClick={handleEntriesClick}>
           Entries
           <CiLogin size={25} className={styles.loginIcon} />
         </button>
