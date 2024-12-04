@@ -21,7 +21,7 @@ function DashBoard({ onLogout }) {
     // Simulate loading
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1000);
   }, []);
 
   const handleLogout = () => {
@@ -35,22 +35,22 @@ function DashBoard({ onLogout }) {
   };
 
   const handleOptionClick = (route) => {
-    setLoading(true); // Simulate loading when navigating
+    setLoading(true); 
     setTimeout(() => {
       navigate(route);
-    }, 1000); // Delay for navigation
+    }, 1000); 
   };
 
   const lOptions = [
-    { name: "Admission Cell", route: "/admissioncell" },
-    { name: "Registrar Office", route: "/registraroffice" },
+    { name: "Admission Cell", route: "/admission-cell" },
+    { name: "Registrar Office", route: "/registrar-office" },
     { name: "HODs", route: "/hods" },
   ];
 
   const rOptions = [
     { name: "Faculties", route: "/faculties" },
     { name: "Students", route: "/students" },
-    { name: "Staff Members", route: "/staffmembers" },
+    { name: "Staff Members", route: "/staff-members" },
   ];
 
   return (

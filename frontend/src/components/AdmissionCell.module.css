@@ -145,15 +145,16 @@ body {
     height: 85vh;
     width: 95vw;
     margin: auto;
+    margin-top: 15px;
     padding: 10px 30px;
     border-radius: 1rem;
     text-align: center;
-    overflow: hidden;
     backdrop-filter: blur(10px);
     background: rgba(255, 254, 254, 0.5); 
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25); 
     overflow: scroll;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -163,10 +164,10 @@ body {
   .heading{
     font-size: 30px;
     font-weight: 700;
-    background-color: wheat;
-    
-    margin-bottom: 30px;
-    margin-top: 10px;
+    background-color: rgb(24, 161, 202);
+    padding: 10px 20px;
+    margin-bottom: 25px;
+    border-radius: 2rem;
 
 
 
@@ -217,3 +218,33 @@ body {
   padding: 5px 10px;
   border-radius: 1rem;
 }
+
+.loaderContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%; 
+}
+
+.loader {
+  width: 60px;
+  height: 60px;
+  border: 6px solid #f3f3f3;
+  border: none;
+  border-radius: 50%;
+  border-top: 6px solid #0c78c0;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+

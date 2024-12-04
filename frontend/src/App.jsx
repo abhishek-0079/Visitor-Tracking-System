@@ -9,6 +9,8 @@ import Hods from "./components/Hods";
 import Faculties from "./components/Faculties";
 import Students from "./components/Students";
 import StaffMembers from "./components/StaffMembers";
+import EntryForm from "./components/EntryForm";
+import Entries from "./components/Entries";
 
 
 
@@ -45,12 +47,14 @@ function App() {
     <Routes>
       <Route path="/" element={<LoginPanel onLogin={() => {}}/>}/>
       <Route path="/dashboard" element={<DashBoard onLogout={handleLogout}/>}/>
-      <Route path="/admissioncell" element={<AdmissionCell/>}/>
-      <Route path="/registraroffice" element={<Registraroffice/>}/>
-      <Route path="/hods" element={<Hods/>}/>
-      <Route path="/faculties" element={<Faculties/>}/>
-      <Route path="/students" element={<Students/>}/>
-      <Route path="/staffmembers" element={<StaffMembers/>}/>
+      <Route path="/admission-cell" element={<AdmissionCell onLogout={handleLogout}/>}/>
+      <Route path="/registrar-office" element={<Registraroffice onLogout={handleLogout}/>}/>
+      <Route path="/hods" element={<Hods onLogout={handleLogout} />}/>
+      <Route path="/faculties" element={<Faculties onLogout={handleLogout}/>}/>
+      <Route path="/students" element={<Students onLogout={handleLogout}/>}/>
+      <Route path="/staff-members" element={<StaffMembers onLogout={handleLogout}/>}/>
+      <Route path="/entry-form" element={<EntryForm  onLogout={handleLogout}/>} />
+      <Route path="/entries" element={<Entries onLogout ={handleLogout}/>}/>
       
       
 

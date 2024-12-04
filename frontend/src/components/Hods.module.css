@@ -145,6 +145,7 @@ body {
     height: 85vh;
     width: 95vw;
     margin: auto;
+    margin-top: 15px;
     padding: 10px 30px;
     border-radius: 1rem;
     text-align: center;
