@@ -218,6 +218,7 @@ body {
 
 .staffName:hover {
   background-color: #18a1ca;
+  cursor: pointer;
   color: #fff;
   transform: translateY(-3px);
 }
