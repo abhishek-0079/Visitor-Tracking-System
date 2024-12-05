@@ -88,7 +88,16 @@ function EntryForm({ onLogout }) {
           <button className={styles.staffBtn}>Send For Approval</button>
         </div>
         <div className={styles.rightContainer}>
-          {/* Add content for the right container as needed */}
+        <p className={styles.heading}> Visitors' Detail</p>
+          <div className={styles.container}>
+          <form className={styles.inputContainer}>
+        <h3>Visiotr entry form</h3>
+           </form>
+           <div className={styles.webCam}>
+            <h3>Visitor img section</h3>
+           </div>
+          </div>
+    
         </div>
       </div>
     </>
