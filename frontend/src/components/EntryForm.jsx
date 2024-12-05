@@ -91,7 +91,7 @@ function EntryForm({ onLogout }) {
         <p className={styles.heading}> Visitors' Detail</p>
           <div className={styles.container}>
           <form className={styles.inputContainer}>
-        <h3>Visiotr entry form</h3>
+        <h3>Visitor entry form</h3>
            </form>
            <div className={styles.webCam}>
             <h3>Visitor img section</h3>
