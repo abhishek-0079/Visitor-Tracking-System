@@ -10,6 +10,7 @@ function DashBoard({ onLogout }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [refreshkey,setRefreshKey] = useState(0); 
 
   const navigate = useNavigate();
 
@@ -41,6 +42,10 @@ function DashBoard({ onLogout }) {
     }, 1000); 
   };
 
+  const handleLogoClick = () => {
+    setRefreshKey((prevKey) => prevKey + 1);
+  };
+
   const lOptions = [
     { name: "HODs", route: "/hods" },
     { name: "Registrar Office", route: "/registrar-office" },
@@ -59,7 +64,7 @@ function DashBoard({ onLogout }) {
   return (
     <>
       <div className={styles.navbar}>
-        <img src={logo} alt="ABES Logo" />
+        <img src={logo} alt="ABES Logo" onClick={handleLogoClick}/>
         <button className={styles.entriesBtn} onClick={handleEntriesClick}>
           Entries
           <CiLogin size={25} className={styles.loginIcon} />

@@ -24,17 +24,17 @@ function LoginPanel({ onLogin }) {
       console.log('Server Response:', res);
       if (res.status === 200) {
         localStorage.setItem('username', username);
-        onLogin(); // Optional: Call a callback function if needed
+        onLogin(); 
         toast.success("Login successful!", { position: 'top-right' });
-        navigate("/dashboard"); // Navigate to the dashboard after successful login
+        navigate("/dashboard"); 
       } else {
-        toast.error(res.data.message || 'Invalid username or password', { position: toast.POSITION.TOP_RIGHT });
+        toast.error(res.data.message || 'Invalid username or password', { position: 'top-right' });
       }
     } catch (error) {
       if (error.response && error.response.status === 401) {
-        toast.error(`Error: ${error.response.status} - ${error.response.data.message || 'Please try again'}`, { position: toast.POSITION.TOP_RIGHT });
+        toast.error(`Error: ${error.response.status} - ${error.response.data.message || 'Please try again'}`, { position: 'top-right' });
       } else {
-        toast.error('An error occurred. Please check your network or try again later.', { position: toast.POSITION.TOP_RIGHT });
+        toast.error('An error occurred. Please check your network or try again later.', { position: 'top-right'});
       }
     }
   };
@@ -69,7 +69,7 @@ function LoginPanel({ onLogin }) {
           <button type="submit" className={styles.btn}>Login</button>
         </form>
       </div>
-      <ToastContainer /> {/* Add ToastContainer here to display the notifications */}
+      <ToastContainer /> 
     </>
   );
 }

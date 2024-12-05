@@ -21,7 +21,7 @@ body {
 .navbar {
   width: 100vw;
 
-  /* background-size: cover; */
+  
   background-position: center;
 
   display: flex;
@@ -70,8 +70,8 @@ body {
 
 .adminName {
   padding: 0 10px;
-  font-size: 14.5px;
-  font-weight: 650;
+  font-size: 17.5px;
+  font-weight: 850;
   color: #333;
   transition: color 0.3s ease;
 }
