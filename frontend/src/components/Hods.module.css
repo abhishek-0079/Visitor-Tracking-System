@@ -175,8 +175,8 @@ body {
   flex-wrap: wrap;
   gap: 20px;
   flex-grow: 1;
-  max-height: 70vh; /* Ensures cards stay within the container */
-  overflow-y: auto; /* Allows scrolling if necessary */
+  max-height: 70vh; 
+  overflow-y: auto; 
 }
 
 .staffCard {
