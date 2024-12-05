@@ -4,6 +4,7 @@ const admissionStaff = [
     name: 'Dr. Divya Mishra',
     position: 'HOD-CSE',
     image: 'https://sample.abes.ac.in/sample/photo/divyamishra.png',
+    location:"Bhabha block 2 floor"
   },
   {
     id: 2,

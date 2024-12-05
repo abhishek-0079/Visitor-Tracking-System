@@ -7,7 +7,7 @@ import logo from "../assets/logo1.png";
 
 function EntryForm({ onLogout }) {
   const location = useLocation();
-  const { staffId, selectedStaff } = location.state || {}; 
+  const { selectedStaff } = location.state || {}; // Get selectedStaff from state
 
   const [username, setUsername] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -20,7 +20,7 @@ function EntryForm({ onLogout }) {
     if (storedUsername) {
       setUsername(storedUsername);
     }
-    
+
     setTimeout(() => {
       setLoading(false);
     }, 1000);
@@ -37,7 +37,7 @@ function EntryForm({ onLogout }) {
   };
 
   const handleEntriesClick = () => {
-    navigate("/entries"); 
+    navigate("/entries");
   };
 
   return (
@@ -55,9 +55,7 @@ function EntryForm({ onLogout }) {
           <FaUserAlt size={28} className={styles.adminImg} />
           {dropdownOpen && (
             <div className={styles.dropdown}>
-              <p className={styles.showOnMobile}>
-                {username || "ABES Guard"}
-              </p>
+              <p className={styles.showOnMobile}>{username || "ABES Guard"}</p>
               <button className={styles.logoutBtn} onClick={handleLogout}>
                 Logout
               </button>
@@ -67,25 +65,30 @@ function EntryForm({ onLogout }) {
       </div>
       <div className={styles.mainContainer}>
         <div className={styles.leftContainer}>
-          <p className={styles.heading}> Recipient Staff Details</p>
-          {selectedStaff && (
+          <p className={styles.heading}>HOD Details</p>
+          {selectedStaff ? (
             <div className={styles.staffDetails}>
               <div className={styles.staffImage}>
-                <FaUserAlt size={50} />
+                <img
+                  src={selectedStaff.image}
+                  alt={selectedStaff.name}
+                  className={styles.staffImg}
+                />
               </div>
               <p className={styles.staffName}>{selectedStaff.name}</p>
               <p className={styles.staffPosition}>{selectedStaff.position}</p>
               <div className={styles.location}>
-                <p className={styles.subHeading}>Location:
-                </p>
+                <p className={styles.subHeading}>Location:</p>
                 <p>Bhabha Block, 3rd Floor, Faculty Room</p>
               </div>
             </div>
+          ) : (
+            <p>No staff details available.</p>
           )}
           <button className={styles.staffBtn}>Send For Approval</button>
         </div>
         <div className={styles.rightContainer}>
-          
+          {/* Add content for the right container as needed */}
         </div>
       </div>
     </>

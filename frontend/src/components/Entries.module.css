@@ -54,7 +54,7 @@ body {
   }
   
   .entriesBtn:hover {
-    background: rgb(226, 26, 12);
+    background: green;
     transform: scale(1.05);
   }
   

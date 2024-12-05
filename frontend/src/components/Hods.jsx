@@ -34,9 +34,9 @@ function HODs({ onLogout }) {
   };
 
   const handleStaffClick = (staff) => {
-    setLoading(true); // Show loader during navigation
+    setLoading(true); 
     setTimeout(() => {
-      navigate("/entry-form", { state: { staff } }); // Pass full staff details
+      navigate("/entry-form", { state: {selectedStaff: staff } }); 
     }, 1000);
   };
 
