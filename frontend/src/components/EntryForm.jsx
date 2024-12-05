@@ -1,20 +1,17 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./EntryForm.module.css";
-import { FaUserAlt, FaUser } from "react-icons/fa";
+import { FaUserAlt } from "react-icons/fa";
 import { CiLogin } from "react-icons/ci";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo1.png";
 
-function EntryForm({onLogout}) {
+function EntryForm({ onLogout }) {
   const location = useLocation();
-  const { staffId } = location.state || {};
+  const { staffId, selectedStaff } = location.state || {}; 
 
   const [username, setUsername] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [selectedStaffId, setSelectedStaffId] = useState(null); // Track selected staff
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
 
@@ -23,7 +20,7 @@ function EntryForm({onLogout}) {
     if (storedUsername) {
       setUsername(storedUsername);
     }
-    // Simulate loading
+    
     setTimeout(() => {
       setLoading(false);
     }, 1000);
@@ -39,21 +36,13 @@ function EntryForm({onLogout}) {
     setDropdownOpen(!dropdownOpen);
   };
 
-  const handleStaffClick = (staffId) => {
-    setSelectedStaffId(staffId);
-    setLoading(true); // Show loader during navigation
-    setTimeout(() => {
-      navigate("/visitor-entry", { state: { staffId } });
-    }, 1000);
-  };
-
   const handleEntriesClick = () => {
-    navigate("/entries"); // Navigate to Entries.jsx
+    navigate("/entries"); 
   };
 
   return (
     <>
-     <div className={styles.navbar}>
+      <div className={styles.navbar}>
         <img src={logo} alt="ABES Logo" />
         <button className={styles.entriesBtn} onClick={handleEntriesClick}>
           Entries
@@ -77,13 +66,28 @@ function EntryForm({onLogout}) {
         </div>
       </div>
       <div className={styles.mainContainer}>
-      <div>
-      <h1>Visitor Entry</h1>
-   <p>form yha bhrna hai</p>
-    </div>
+        <div className={styles.leftContainer}>
+          <p className={styles.heading}> Recipient Staff Details</p>
+          {selectedStaff && (
+            <div className={styles.staffDetails}>
+              <div className={styles.staffImage}>
+                <FaUserAlt size={50} />
+              </div>
+              <p className={styles.staffName}>{selectedStaff.name}</p>
+              <p className={styles.staffPosition}>{selectedStaff.position}</p>
+              <div className={styles.location}>
+                <p className={styles.subHeading}>Location:
+                </p>
+                <p>Bhabha Block, 3rd Floor, Faculty Room</p>
+              </div>
+            </div>
+          )}
+          <button className={styles.staffBtn}>Send For Approval</button>
+        </div>
+        <div className={styles.rightContainer}>
+          
+        </div>
       </div>
-
-    
     </>
   );
 }
