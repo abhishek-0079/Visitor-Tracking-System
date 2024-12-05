@@ -48,6 +48,7 @@ const admissionStaff = [
     name: 'Dr. Amrita Jyoti',
     position: 'HOD-IT & CE',
     image: 'https://sample.abes.ac.in/sample/photo/amritaJ.JPG',
+    location:"AryaBhatta IIIrd Floor"
   },
   {
     id: 9,
