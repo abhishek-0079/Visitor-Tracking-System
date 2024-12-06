@@ -7,9 +7,9 @@ import { BsFillPeopleFill } from "react-icons/bs";
 import Webcam from "react-webcam";
 
 import { FaLocationDot } from "react-icons/fa6";
-
 import { CiLogin } from "react-icons/ci";
 import logo from "../assets/logo1.png";
+
 
 function EntryForm({ onLogout }) {
   const location = useLocation();
@@ -20,8 +20,8 @@ function EntryForm({ onLogout }) {
   const [loading, setLoading] = useState(true);
   const [capturedImage, setCapturedImage] = useState(null);
   const [showWebcam, setShowWebcam] = useState(false);
+  const [showGreenTick, setShowGreenTick] = useState(false); // Green tick state
   const navigate = useNavigate();
-
   const webcamRef = React.useRef(null);
 
   useEffect(() => {
@@ -64,6 +64,26 @@ function EntryForm({ onLogout }) {
     setTimeout(() => {
       capturePhoto();
     }, 5000);
+  };
+
+  const handleApprove = (e) => {
+    e.preventDefault();
+    setShowGreenTick(true);
+
+    // Log entry in localStorage for simplicity
+    const entries = JSON.parse(localStorage.getItem("entries")) || [];
+    const newEntry = {
+      name: e.target.elements.name.value,
+      phone: e.target.elements.phone.value,
+      location: e.target.elements.location.value,
+      image: capturedImage,
+    };
+    entries.push(newEntry);
+    localStorage.setItem("entries", JSON.stringify(entries));
+
+    setTimeout(() => {
+      setShowGreenTick(false);
+    }, 3000); // Hide tick after 3 seconds
   };
 
   return (
@@ -115,82 +135,99 @@ function EntryForm({ onLogout }) {
         </div>
         <div className={styles.rightContainer}>
           <p className={styles.heading}>Visitors' Detail</p>
-          <div className={styles.container}>
-            <form className={styles.inputContainer}>
-              <div>
-                <FaUserAlt size={20} />
-                <input type="text" placeholder="Full name" required />
-              </div>
-              <div>
-                <PiPhoneCallFill size={24} />
-                <input type="tel" placeholder="Phone Number" required />
-              </div>
-
-              <div>
-                <BsFillPeopleFill size={24} />
-                <select>
-                  <option value="heading" aria-selected>
-                    Add-on peoples
-                  </option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
-              </div>
-              <div>
-                <FaLocationDot size={24} />
-                <select>
-                  <option value="heading" selected>
-                    From where you came from?
-                  </option>
-                  <option value="Delhi">Delhi</option>
-                  <option value="Gorakhpur">Gorakhpur</option>
-                  <option value="Lucknow">Lucknow</option>
-                  <option value="Kanpur">Kanpur</option>
-                  <option value="Varanasi">Varanasi</option>
-                </select>
-              </div>
-              <button
-                className={styles.captureBtn}
-                onClick={handleCaptureButtonClick}
-                type="button"
-              >
-                {capturedImage ? "Retake Image" : "Capture Image"}
-              </button>
-              <div className={styles.approvalBtn}>
-                <button className={styles.approve} type="submit">
-                  Approve
-                </button>
-                <button className={styles.disApprove} type="submit">
-                  Disapprove
-                </button>
-              </div>
-            </form>
-            <div className={styles.webCam}>
-              {showWebcam && (
-                <Webcam
-                mirrored={true}
-                screenshotQuality={1}
-                imageSmoothing={true}
-                  audio={false}
-                  ref={webcamRef}
-                  screenshotFormat="image/jpeg"
-                  className={styles.showWebcam}
-                />
-              )}
-              {capturedImage && (
-                <div className={styles.capturedImageContainer}>
-                  <img
-                    src={capturedImage}
-                    alt="Captured"
-                    className={styles.capturedImage}
+          {showGreenTick ? (
+            <img
+              src='https://media.tenor.com/HbpenGYruKEAAAAM/verifi.gif'
+              alt="Approved"
+              className={styles.greenTickGif}
+            />
+          ) : (
+            <div className={styles.container}>
+              <form className={styles.inputContainer} onSubmit={handleApprove}>
+                <div>
+                  <FaUserAlt size={20} />
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Full name"
+                    required
                   />
                 </div>
-              )}
+                <div>
+                  <PiPhoneCallFill size={24} />
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Phone Number"
+                    required
+                  />
+                </div>
+                <div>
+                  <BsFillPeopleFill size={24} />
+                  <select>
+                    <option value="heading" aria-selected>
+                      Add-on peoples
+                    </option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </div>
+                <div>
+                  <FaLocationDot size={24} />
+                  <select name="location" required>
+                    <option value="" selected disabled>
+                      From where you came from?
+                    </option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Gorakhpur">Gorakhpur</option>
+                    <option value="Lucknow">Lucknow</option>
+                    <option value="Kanpur">Kanpur</option>
+                    <option value="Varanasi">Varanasi</option>
+                  </select>
+                </div>
+                <button
+                  className={styles.captureBtn}
+                  onClick={handleCaptureButtonClick}
+                  type="button"
+                >
+                  {capturedImage ? "Retake Image" : "Capture Image"}
+                </button>
+                <div className={styles.approvalBtn}>
+                  <button className={styles.approve} type="submit">
+                    Approve
+                  </button>
+                  <button className={styles.disApprove} type="button">
+                    Disapprove
+                  </button>
+                </div>
+              </form>
+              <div className={styles.webCam}>
+                {showWebcam && (
+                  <Webcam
+                    mirrored={true}
+                    screenshotQuality={1}
+                    imageSmoothing={true}
+                    audio={false}
+                    ref={webcamRef}
+                    screenshotFormat="image/jpeg"
+                    className={styles.showWebcam}
+                  />
+                )}
+                {capturedImage && (
+                  <div className={styles.capturedImageContainer}>
+                    <img
+                      src={capturedImage}
+                      alt="Captured"
+                      className={styles.capturedImage}
+                    />
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </>

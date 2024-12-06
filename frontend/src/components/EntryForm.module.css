@@ -323,6 +323,11 @@ option{
   cursor: pointer;
 }
 
+.captureBtn:hover{
+  background-color: #333;
+  transform: scale(1.03);
+}
+
 .approvalBtn button{
   outline: none;
   font-size: 20px;

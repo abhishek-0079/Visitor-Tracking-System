@@ -160,3 +160,84 @@ body {
 }
 
 
+.entriesTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  text-align: left;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  margin-bottom: auto;
+}
+
+.entriesTable th,
+.entriesTable td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.entriesTable th {
+  background-color: #4caf50;
+  color: white;
+}
+
+.entriesTable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.visitorImage {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+.deleteBtn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.deleteBtn:hover {
+  background-color: #c0392b;
+  transform: scale(1.05);
+}
+
+.actionButtons {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+}
+
+.downloadBtn,
+.printBtn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.downloadBtn:hover {
+  background-color: green;
+  transform: scale(1.05);
+}
+
+.printBtn:hover {
+  background-color: #2ecc71;
+  transform: scale(1.05);
+}
+
+
