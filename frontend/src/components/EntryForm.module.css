@@ -303,6 +303,13 @@ body {
   background-color: rgb(255, 255, 255);
   cursor: pointer;
 }
+option{
+ font-size: 16px;
+ font-weight: 600;
+ outline: none;
+ border: none;
+
+}
 .captureBtn{
  
   margin: 10px 0px 10px 8px;
