@@ -61,10 +61,9 @@ function EntryForm({ onLogout }) {
     setShowWebcam(true);
     setCapturedImage(null);
 
-    // Automatically capture photo after 4 seconds
     setTimeout(() => {
       capturePhoto();
-    }, 4000);
+    }, 5000);
   };
 
   return (
