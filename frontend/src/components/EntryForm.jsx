@@ -20,7 +20,8 @@ function EntryForm({ onLogout }) {
   const [loading, setLoading] = useState(true);
   const [capturedImage, setCapturedImage] = useState(null);
   const [showWebcam, setShowWebcam] = useState(false);
-  const [showGreenTick, setShowGreenTick] = useState(false); // Green tick state
+  const [showGreenTick, setShowGreenTick] = useState(false); 
+  const [countdown, setCountdown] = useState(3);
   const navigate = useNavigate();
   const webcamRef = React.useRef(null);
 
@@ -61,9 +62,18 @@ function EntryForm({ onLogout }) {
     setShowWebcam(true);
     setCapturedImage(null);
 
-    setTimeout(() => {
-      capturePhoto();
-    }, 5000);
+    let countdownTimer = 3;
+    const countdownInterval = setInterval(() => {
+      if(countdownTimer > 0) {
+        setCountdown(countdownTimer);
+        countdownTimer -= 1;
+      }else{
+        capturePhoto();
+        clearInterval(countdownInterval);
+      }
+    }, 1000);
+
+   
   };
 
   const handleApprove = (e) => {
@@ -83,7 +93,7 @@ function EntryForm({ onLogout }) {
 
     setTimeout(() => {
       setShowGreenTick(false);
-    }, 3000); // Hide tick after 3 seconds
+    }, 4000); 
   };
 
   return (
@@ -195,6 +205,7 @@ function EntryForm({ onLogout }) {
                 >
                   {capturedImage ? "Retake Image" : "Capture Image"}
                 </button>
+                
                 <div className={styles.approvalBtn}>
                   <button className={styles.approve} type="submit">
                     Approve
@@ -206,6 +217,7 @@ function EntryForm({ onLogout }) {
               </form>
               <div className={styles.webCam}>
                 {showWebcam && (
+                  <>
                   <Webcam
                     mirrored={true}
                     screenshotQuality={1}
@@ -214,7 +226,11 @@ function EntryForm({ onLogout }) {
                     ref={webcamRef}
                     screenshotFormat="image/jpeg"
                     className={styles.showWebcam}
-                  />
+                    />
+                  <div className={styles.countdown}>
+                  {countdown > 0 ?  <p>{countdown}</p> : <p className={styles["cheese-text"]}>Stay Steady</p>}
+                </div>
+                </>
                 )}
                 {capturedImage && (
                   <div className={styles.capturedImageContainer}>

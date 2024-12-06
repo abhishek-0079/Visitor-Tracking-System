@@ -387,3 +387,80 @@ option{
   height: 100%;
   border-radius: 1rem;
 }
+
+
+.countdown {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5rem; 
+  color: #fff;
+  font-family: 'Roboto', sans-serif; 
+  font-weight: 900; 
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.6); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1000; 
+  animation: fadeIn 1s ease-out; 
+}
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+
+.countdown p {
+  font-size: 6rem; 
+  color: #ff4f58; 
+  letter-spacing: 2px;
+  animation: countdownAnimation 1s ease-in-out forwards; 
+}
+
+@keyframes countdownAnimation {
+  0% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2); 
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+.countdown .cheese-text {
+  font-size: 4rem;
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  opacity: 0;
+  animation: fadeInCheese 1s 0.8s forwards; 
+}
+
+
+@keyframes fadeInCheese {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
