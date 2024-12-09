@@ -131,11 +131,11 @@ function EntryForm({ onLogout }) {
                   className={styles.staffImg}
                 />
               </div>
-              <p className={styles.staffName}>{selectedStaff.name}</p>
+             <div> <p className={styles.staffName}>{selectedStaff.name}</p>
               <p className={styles.staffPosition}>{selectedStaff.position}</p>
               <div className={styles.location}>
                 <p className={styles.subHeading}>Location:</p>
-                <p>Bhabha Block, 3rd Floor, Faculty Room</p>
+                <p>Bhabha Block, 3rd Floor, Faculty Room</p></div>
               </div>
             </div>
           ) : (
